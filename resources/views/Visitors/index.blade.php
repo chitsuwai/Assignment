@@ -62,14 +62,16 @@
 
         // temperature dropdown trigger event
         $( "#ddl_temperature" ).change(function() {
+            $('#show_tbl').html();
+                        
             var temperature =  $( "#ddl_temperature option:selected" ).val();
             $.ajax({
                 type: "GET",
                 url: '/visitors/show_data', 
                 data: { temperature:temperature}, 
-            }).done(function( value ) {
+            }).done(function( result ) {
                 var res='<table id="show_tbl" class="table table-bordered" width="100%"><thead><tr><th>No</th><th>Name</th><th>Date Time</th><th>Temperature</th><th>Contact Number</th></tr></thead><tbody>';
-                $.each (value, function (key, value) {
+                $.each (result, function (key, value) {
                         res +=
                         '<tr>'+
                             '<td>'+value.id+'</td>'+
@@ -77,14 +79,14 @@
                             '<td>'+value.date+'</td>'+
                             '<td>'+value.temperature+'</td>'+
                             '<td>'+value.contact_number+'</td>'+
-                    '</tr>';
-                    res +='</tbody></table>'
-
+                    '</tr>';                    
                 });
+                res +='</tbody></table>';
                 $('#show_tbl').html(res);
                 $('#show_tbl').DataTable({ 
                     "destroy": true, //reinitialize datatable
                 });
+                
             });
         });
     });        
