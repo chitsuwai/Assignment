@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/visitors', function () {
-//     return view('visitors.index');
-// });
+Route::get('/', function () {
+    return view('visitors.create');
+});
 Route::post('/', function () {
     return view('visitors.index');
 });

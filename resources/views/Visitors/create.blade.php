@@ -52,7 +52,7 @@
                 <div class="form-group row">
                     <label for="temperature" class="col-sm-2 col-form-label">Temperature</label>
                     <div class="alert alert-danger" style="display:none"></div>
-                    <input type="number" step="0.01" name="temperature" class="form-control" placeholder="Temperature" id="temperature" />
+                    <input type="number" step="00.01" max="99.99"  name="temperature" class="form-control" placeholder="Temperature" id="temperature" pattern="^\d{0,2}(\.\d{1,2})?$"/>
                 </div>
                 <div class="form-group row">
                     <label for="Safe" class="col-sm-2 col-form-label">Safe</label><br/>
